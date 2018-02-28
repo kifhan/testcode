@@ -49,8 +49,8 @@ var addShowRoom = function(database, name, address, tel, longitude, latitude, co
 				   coordinates: [longitude, latitude]
          },
          content: {
-           
-           contents: [title, img]
+           title:title,
+           img: img
          }
 			}
   );
