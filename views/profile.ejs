@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+
+		<title>Profile</title>
+
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+
+    	<style>
+        	body        { padding-top:80px; }
+    	</style>
+
+	</head>
+	<body>
+
+		<div class="container">
+
+			<div class="page-header text-center">
+		        <h1><span class="fa fa-book"></span> User Profile</h1>
+		        <a href="/logout" class="btn btn-default btn-sm">Sign Out</a>
+		    </div>
+			<br>
+		    <div class="row">
+
+		        <div class="col-sm-6">
+		            <div class="well">
+		                <h3><span class="fa fa-user"></span> Profile info</h3>
+						<br>
+						<p>
+		                	<strong>Email</strong>: <%= user.email %>
+		                	<br><br>
+		                	<strong>Name</strong>: <%= user.name %>
+		        </p>
+						<br>
+						
+		            </div>
+		        </div>
+
+		    </div>
+
+				<div class="row">
+
+		        <div class="col-sm-6">
+		            <div class="well">
+		                <h3> Access to Map</h3>
+						<br>
+						<a href="../public/map.html">Start your map</a>
+		            </div>
+		        </div>
+
+		    </div>
+
+		</div>
+
+	</body>
+</html>
