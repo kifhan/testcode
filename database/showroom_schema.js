@@ -11,10 +11,10 @@ Schema.createSchema = function(mongoose) {
         },
         created_at: {type: Date, index: {unique: false}, 'default': Date.now},
         updated_at: {type: Date, index: {unique: false}, 'default': Date.now},
-        content: {
-          title: {type: String, 'default':''},
-          img: { data: Buffer, contentType: String }
-        }
+        content : [{
+          intro:{type : String, trim: true, 'default' : ''},
+          image:{type: Buffer, required: true}
+        }]
     });
 
     ShowRoomSchema.index({geometry:'2dsphere'});

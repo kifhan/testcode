@@ -5,6 +5,9 @@ var add = function(req, res) {
     var paramTel = req.body.tel || req.query.tel;
     var paramLongitude = req.body.longitude || req.query.longitude;
     var paramLatitude = req.body.latitude || req.query.latitude;
+    var paramIntro = req.body.intro || req.query.intro;
+    var paramImage = req.body.image || req.query.image;
+
 
     console.log('req param : ' + paramName + ', ' + paramAddress + ', ' +
                paramTel + ', ' + paramLongitude + ', ' +
@@ -13,10 +16,10 @@ var add = function(req, res) {
     // DB object
     var database = req.app.get('database');
     if (database.db) {
-        addShowRoom(database, paramName, paramAddress, paramTel, paramLongitude, paramLatitude, function(err, result) {
+        addShowRoom(database, paramName, paramAddress, paramTel, paramLongitude, paramLatitude, paramIntro, paramImage, function(err, result) {
         if (err) {
           res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-          res.write('<h2>Error while adding coffeeshop</h2>');
+          res.write('<h2>Error while adding showroom</h2>');
           res.write('<p>' + err.stack + '</p>');
           res.end();
 
@@ -40,7 +43,7 @@ var add = function(req, res) {
 };
 
 // ADDSHOWROOM
-var addShowRoom = function(database, name, address, tel, longitude, latitude, content, callback) {
+var addShowRoom = function(database, name, address, tel, longitude, latitude, intro, image, callback) {
   // ShowRoomModel object
   var showroom = new database.ShowRoomModel(
     {name:name, address:address, tel:tel,
@@ -49,10 +52,10 @@ var addShowRoom = function(database, name, address, tel, longitude, latitude, co
 				   coordinates: [longitude, latitude]
          },
          content: {
-           title:title,
-           img: img
-         }
-			}
+         intro:intro,
+         image:image
+			   }
+    }
   );
 
   //save()
@@ -86,7 +89,7 @@ var findNear = function(req, res) {
 
 		database.ShowRoomModel.findNear(paramLongitude, paramLatitude, maxDistance, function(err, results) {
 			if (err) {
-                console.error('커피숍 검색 중 에러 발생 : ' + err.stack);
+                console.error('Error while searching : ' + err.stack);
 
                 res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
 				        res.write('<h2>Error while searching near showroom</h2>');
@@ -101,7 +104,7 @@ var findNear = function(req, res) {
 					res.render('findnear.ejs', {result: results[0]._doc, paramLatitude: paramLatitude, paramLongitude: paramLongitude});
 				} else {
 					res.writeHead('200', {'Content-Type':'text/html;charset=utf8'});
-					res.write('<h2>가까운 커피숍 데이터가 없습니다.</h2>');
+					res.write('<h2>No Data nearby you. Please register your business</h2>');
 					res.end();
 				}
 
