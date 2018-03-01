@@ -13,7 +13,7 @@ Schema.createSchema = function(mongoose) {
         updated_at: {type: Date, index: {unique: false}, 'default': Date.now},
         content : [{
           intro:{type : String, trim: true, 'default' : ''},
-          image:{type: Buffer, required: true}
+          image:{data: Buffer, contentType: String}
         }]
     });
 

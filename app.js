@@ -69,7 +69,12 @@ app.use(expressSession({
 	saveUninitialized:true
 }));
 
-
+app.use(multer({
+    dest: 'uploads/',
+    rename: function(fieldname, filename) {
+        return filename.replace(/\W+/g, '-').toLowerCase()
+    }
+}).single('image'))
 
 //===== Passport 사용 설정 =====//
 // Passport의 세션을 사용할 때는 그 전에 Express의 세션을 사용하는 코드가 있어야 함
