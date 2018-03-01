@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Add Test</title>
+	</head>
+<body>
+	<% include ../views/head.ejs %>
+
+	<h1>Please add your ShowRoom</h1>
+	<br>
+	<h3>http://mygeoposition.com/ .</h3>
+	<br>
+  <p>
+  <p>
+
+	<br>
+  <form method="post" enctype="multipart/form-data" action="/process/addshowroom">
+    <table>
+			<tr>
+				<td><label>Business Name</label></td>
+				<td><input type="text" name="name" value="" placeholder="business name" /></td>
+			</tr>
+			<tr>
+				<td><label>Adress</label></td>
+				<td><input type="text" name="address" value="" placeholder="An accurate business location" /></td>
+			</tr>
+			<tr>
+				<td><label>Phone Number</label></td>
+				<td><input type="text" name="tel" value="" placeholder="1-234-566-7890" /></td>
+			</tr>
+			<tr>
+				<td><label>Longitude</label></td>
+				<td><input type="text" name="longitude" value="" placeholder="-71.058880"/></td>
+			</tr>
+			<tr>
+				<td><label>Latitude</label></td>
+				<td><input type="text" name="latitude" value="" placeholder="42.360082" /></td>
+			</tr>
+			<tr>
+				<td><label>intro</label></td>
+				<td><textarea name="intro" style="width:12em;height:10em;" placeholder="Describe your business"></textarea></td>
+			</tr>
+			<tr>
+				<td><label>ARCode or Photo</label></td>
+				<td><input type="file" name="image" value="" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="submit" name="" />
+	</form>
+</body>
+</html>
