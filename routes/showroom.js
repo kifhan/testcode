@@ -107,10 +107,6 @@ var findNear = function(req, res) {
 			if (results) {
         console.dir(results);
         
-        // function hexToBase64(str) {
-        //   return btoa(String.fromCharCode.apply(null, str.replace(/\r|\n/g, "").replace(/([\da-fA-F]{2}) ?/g, "0x$1 ").replace(/ +$/, "").split(" ")));
-        // }
-
 				if (results.length > 0) {
           res.render('findnear.ejs', { result: results[0]._doc, paramLatitude: paramLatitude, paramLongitude: paramLongitude, imagebinary: btoa(results[0]._doc.content[0].image.data) });
 				} else {
